@@ -1,56 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        
-        input[type="text"] {
-            padding: 5px;
-            font-size: 14px;
-        }
-        
-        button {
-            padding: 5px 10px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: #f2f2f2;
-        }
-        
-        .delete-button {
-            background-color: #f44336;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            font-size: 12px;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        
-        .delete-button:hover {
-            background-color: #d32f2f;
-        }
-    </style>
 </head>
 <body>
+    <div class="header">Clash of Clans Stats</div>
+
     <input id="player-tag-input" type="text" placeholder="Enter player tag">
     <button id="fetch-player-info">Fetch Player Info</button>
+    <button id="refresh-table">Refresh Table</button>
 
     <table id="player-info" border="1">
         <thead>
@@ -74,6 +33,20 @@
             <!-- Data will be inserted here -->
         </tbody>
     </table>
+
+    <table id="war-log" border="1">
+        <thead>
+            <tr>
+                <th>Opponent Clan</th>
+                <th>Result</th>
+                <th>Stars</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- War log entries will be inserted here -->
+        </tbody>
+    </table>
+    
     
     <script src="player.js"></script>
 </body>
