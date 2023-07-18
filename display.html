@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">Clash of Clans Stats</div>
 
-    <input id="player-tag-input" type="text" placeholder="Enter player tag">
+    <input id="player-tag-input" type="text" placeholder="Enter player tag" />
     <button id="fetch-player-info">Fetch Player Info</button>
     <button id="refresh-table">Refresh Table</button>
 
     <table id="player-info" border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Level</th>
-                <th>Trophies</th>
-                <th>Clan Name</th>
-                <th>Clan Level</th>
-                <th>Role in Clan</th>
-                <th>Attacks Won</th>
-                <th>Defenses Won</th>
-                <th>Donations</th>
-                <th>Received Donations</th>
-                <th>War Stars</th>
-                <th>Townhall Level</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be inserted here -->
-        </tbody>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Trophies</th>
+          <th>Clan Name</th>
+          <th>Clan Level</th>
+          <th>Role in Clan</th>
+          <th>Attacks Won</th>
+          <th>Defenses Won</th>
+          <th>Donations</th>
+          <th>Received Donations</th>
+          <th>War Stars</th>
+          <th>Townhall Level</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be inserted here -->
+      </tbody>
     </table>
 
     <table id="war-log" border="1">
-        <thead>
-            <tr>
-                <th>Opponent Clan</th>
-                <th>Result</th>
-                <th>Stars</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- War log entries will be inserted here -->
-        </tbody>
+      <thead>
+        <tr>
+          <th>Opponent Clan</th>
+          <th>Result</th>
+          <th>Stars</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- War log entries will be inserted here -->
+      </tbody>
     </table>
-    
-    
+
     <script src="player.js"></script>
-</body>
+  </body>
 </html>

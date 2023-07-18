@@ -1,71 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
 .header {
-    text-align: center;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    letter-spacing: 1px;
+  text-align: center;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  letter-spacing: 1px;
 }
 
-input[type="text"], button {
-    padding: 10px;
-    margin: 5px;
-    font-size: 16px;
-    border-radius: 5px;
+input[type="text"],
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 button {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    border: none;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border: none;
 }
 
 button:hover {
-    background-color: #1a252f;
+  background-color: #1a252f;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
-    background-color: #ecf0f1;
-    margin-top: 20px;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.10);
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ecf0f1;
+  margin-top: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #bdc3c7;
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #bdc3c7;
 }
 
 th {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    text-transform: uppercase;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-transform: uppercase;
 }
 
 .delete-button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 3px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 .delete-button:hover {
-    background-color: #c0392b;
+  background-color: #c0392b;
 }
 
 .profile-picture {
-    width: 50px;
-    height: 50px;
-  }
-  
+  width: 50px;
+  height: 50px;
+}
+.rushed {
+  background-color: rgba(255, 0, 0, 0.1);
+}

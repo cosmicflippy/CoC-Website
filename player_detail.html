@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="player-detail">
+      <!-- Player's war data will be inserted here -->
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Get player tag from URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var playerTag = urlParams.get("tag");
+
+        // Fetch player's war data
+        $.ajax({
+          url:
+            "https://api.clashofclans.com/v1/players/" + playerTag + "/warlog",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer your-api-key",
+          },
+          success: function (data) {
+            // Display player's war data
+            // For example, let's just display the player's name for now
+            $("#player-detail").html("<h1>" + data.name + "</h1>");
+          },
+          error: function (error) {
+            console.log("Error:", error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

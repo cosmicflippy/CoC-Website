@@ -19,6 +19,11 @@ $(document).ready(function() {
 
                 // Add player profile picture
                 var profilePicture = data.profilePicture || 'default-avatar.png';
+                
+                var actions = '<button class="delete-tag" data-tag="' + data.tag + '">Delete</button>';
+                if (clanName !== '-') {
+                    actions += '<button class="clan-war-info" data-tag="' + data.tag + '">Clan War Info</button>';
+                }
 
                 $('#player-info tbody').append(
                     '<tr>' +
@@ -35,7 +40,7 @@ $(document).ready(function() {
                     '<td>' + receivedDonations + '</td>' +
                     '<td>' + data.warStars + '</td>' +
                     '<td>' + data.townHallLevel + '</td>' +
-                    '<td><button class="delete-tag" data-tag="' + data.tag + '">Delete</button></td>' +
+                    '<td>' + actions + '</td>' +
                     '</tr>'
                 );
             },
@@ -121,7 +126,7 @@ $(document).ready(function() {
         });
     }
     
-        fetchProfilePictures();
+    fetchProfilePictures();
 
     function refreshTable() {
         $.ajax({
@@ -133,6 +138,10 @@ $(document).ready(function() {
     
                 for (var i = 0; i < data.length; i++) {
                     var player = data[i];
+                    var actions = '<button class="delete-tag" data-tag="' + player.tag + '">Delete</button>';
+                    if (player.clan_name !== '-') {
+                        actions += ' <button class="clan-war-info" data-tag="' + player.tag + '">Clan War Info</button>';
+                    }
                     $('#player-info tbody').append(
                         '<tr>' +
                         '<td>' + player.name + '</td>' +
@@ -147,7 +156,7 @@ $(document).ready(function() {
                         '<td>' + player.received_donations + '</td>' +
                         '<td>' + player.war_stars + '</td>' +
                         '<td>' + player.townhall_level + '</td>' +
-                        '<td><button class="delete-tag" data-tag="' + player.tag + '">Delete</button></td>' +
+                        '<td>' + actions + '</td>' +
                         '</tr>'
                     );
                 }
@@ -156,6 +165,13 @@ $(document).ready(function() {
                 console.log('Error:', error);
             },
         });
+    }
+    
+    $('#fetch-player-info').click(function() {
+        var playerTag = $('#player-tag-input').val();
+        fetchAndDisplayPlayerInfo(playerTag);
+    });
+    
     
     $('#fetch-player-info').click(function() {
         var playerTag = $('#player-tag-input').val();
@@ -182,6 +198,51 @@ $(document).ready(function() {
             },
         });
     });
+
+    $(document).on('click', '.clan-war-info', function() {
+        var playerTag = $(this).data('tag');
+    
+        fetchClanWarStats(playerTag);
+    });
+    
+    
+    function fetchClanWarStats(clanTag) {
+        $.ajax({
+            url: 'https://api.clashofclans.com/v1/clans/' + encodeURIComponent(clanTag) + '/warlog',
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9'
+            },
+            success: function(data) {
+                var totalStarsAchieved = 0;
+                var totalStarsOpponentsGot = 0;
+                var wins = 0;
+                var losses = 0;
+                
+                for (var i = 0; i < data.items.length; i++) {
+                    var war = data.items[i];
+                    totalStarsAchieved += war.clan.stars;
+                    totalStarsOpponentsGot += war.opponent.stars;
+                    
+                    if (war.result === 'win') {
+                        wins++;
+                    } else if (war.result === 'loss') {
+                        losses++;
+                    }
+                }
+                
+                var winLossRatio = wins / losses;
+    
+                // Show the stats in a popup
+                alert('Total stars achieved: ' + totalStarsAchieved +
+                      '\nTotal stars opponents got: ' + totalStarsOpponentsGot +
+                      '\nWin/Loss ratio: ' + winLossRatio.toFixed(2));
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+    }
     
     $(document).on('click', '.delete-tag', function() {
         var playerTag = $(this).data('tag');
@@ -207,6 +268,6 @@ $(document).ready(function() {
             }
         });
     });
-    }   
+
     refreshTable();
-});
+});  
